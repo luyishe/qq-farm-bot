@@ -718,9 +718,6 @@ async function visitFriend(friend, totalActions, myGid, accountId) {
     const friendBlacklist = getFriendBlacklist(accountId);
     const friendId = toNum(gid);
     if (friendBlacklist && friendBlacklist.includes(friendId)) {
-        log('好友', `${name} 被好友黑名单过滤跳过`, {
-            module: 'friend', event: '好友黑名单跳过', friendName: name, friendGid: gid
-        });
         return;
     }
 
@@ -1369,13 +1366,11 @@ let badExecutedOnStartup = false;
 
 async function runBadOnceOnStartup() {
     if (badExecutedOnStartup) {
-        log('好友', '启动时放虫放草已执行过，跳过', { module: 'friend', event: '启动放虫放草跳过' });
         return;
     }
 
     const autoBadEnabled = isAutomationOn('friend_bad');
     if (!autoBadEnabled) {
-        log('好友', '放虫放草功能未开启，跳过', { module: 'friend', event: '放虫放草未开启' });
         return;
     }
 

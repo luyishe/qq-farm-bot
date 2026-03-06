@@ -280,7 +280,6 @@ let nextStealRunAt = 0;
 
 async function runStealTick(auto) {
     if (stealTaskRunning) {
-        log('系统', '偷菜巡查跳过：正在执行中', { module: 'system', event: '偷菜巡查', result: 'skipped', reason: 'running' });
         return;
     }
     if (!auto.friend_steal) {
